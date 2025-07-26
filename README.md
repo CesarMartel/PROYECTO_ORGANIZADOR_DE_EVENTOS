@@ -25,10 +25,9 @@ El sistema busca brindar una interfaz intuitiva y eficiente que facilite la admi
 | ------------------ | -----------------|
 | Scrum Master       | Cesar Martel     |
 | Product Owner      | Miguel Ruiz      |
-| Developer Frontend | Felix Torre      |
-| Developer Backend  | Nicolaz Meza     |
-| Developer Backend  | Sebastian Rosas  |
-
+| Developer front-end| Felix Torre      |
+| Developer apoyo    | Nicolaz Meza     |
+| Developer back-end | Sebastian Rosas  |
 
 ---
 
