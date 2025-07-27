@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de Evento</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <ul class="nav-list">
+        <li><a href="registro.html">Registro</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="registro-container">
+      <h1>Registro de Evento</h1>
+      <form class="registro-form">
+        <div class="form-group">
+          <label for="nombre">Nombre del Evento</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required />
+        </div>
+
+        <div class="form-group">
+          <label for="hora">Hora</label>
+          <input type="time" id="hora" name="hora" required />
+        </div>
+
+        <div class="form-group">
+          <label for="ubicacion">Ubicación</label>
+          <select id="ubicacion" name="ubicacion" required>
+            <option value="" disabled selected>Selecciona Distrito</option>
+            <option value="Ancón">Ancón</option>
+            <option value="Ate">Ate</option>
+            <option value="Barranco">Barranco</option>
+            <option value="Breña">Breña</option>
+            <option value="Carabayllo">Carabayllo</option>
+            <option value="Chaclacayo">Chaclacayo</option>
+            <option value="Chorrillos">Chorrillos</option>
+            <option value="Cieneguilla">Cieneguilla</option>
+            <option value="Comas">Comas</option>
+            <option value="El Agustino">El Agustino</option>
+            <option value="Independencia">Independencia</option>
+            <option value="Jesús María">Jesús María</option>
+            <option value="La Molina">La Molina</option>
+            <option value="La Victoria">La Victoria</option>
+            <option value="Lima">Lima</option>
+            <option value="Lince">Lince</option>
+            <option value="Los Olivos">Los Olivos</option>
+            <option value="Lurigancho">Lurigancho</option>
+            <option value="Lurín">Lurín</option>
+            <option value="Magdalena del Mar">Magdalena del Mar</option>
+            <option value="Miraflores">Miraflores</option>
+            <option value="Pachacámac">Pachacámac</option>
+            <option value="Pucusana">Pucusana</option>
+            <option value="Pueblo Libre">Pueblo Libre</option>
+            <option value="Puente Piedra">Puente Piedra</option>
+            <option value="Punta Hermosa">Punta Hermosa</option>
+            <option value="Punta Negra">Punta Negra</option>
+            <option value="Rímac">Rímac</option>
+            <option value="San Bartolo">San Bartolo</option>
+            <option value="San Borja">San Borja</option>
+            <option value="San Isidro">San Isidro</option>
+            <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+            <option value="San Juan de Miraflores">San Juan de Miraflores</option>
+            <option value="San Luis">San Luis</option>
+            <option value="San Martín de Porres">San Martín de Porres</option>
+            <option value="San Miguel">San Miguel</option>
+            <option value="Santa Anita">Santa Anita</option>
+            <option value="Santa María del Mar">Santa María del Mar</option>
+            <option value="Santa Rosa">Santa Rosa</option>
+            <option value="Santiago de Surco">Santiago de Surco</option>
+            <option value="Surquillo">Surquillo</option>
+            <option value="Villa El Salvador">Villa El Salvador</option>
+            <option value="Villa María del Triunfo">Villa María del Triunfo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo de Evento</label>
+          <select id="tipo" name="tipo">
+            <option value="presencial">Presencial</option>
+            <option value="virtual">Virtual</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" rows="4" placeholder="Detalles del evento…"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Registrar Evento</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
