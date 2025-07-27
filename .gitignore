@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+.env.bak
+.envrc
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MySQL dumps
+*.sql
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# Test output
+junitxml.xml
+
+# Misc
+*.swp
+*.swo
+
+# Node (por si se usa para frontend)
+node_modules/
