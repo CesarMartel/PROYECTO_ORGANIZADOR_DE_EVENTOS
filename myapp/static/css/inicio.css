@@ -1,0 +1,121 @@
+/* --- Base y tipografía --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Use a system font stack for better performance and fallback */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    color: #fff;
+    /* Removed 'overflow: hidden' from html, body to allow scrolling if content exceeds viewport,
+       or manage overflow on specific elements if needed. */
+}
+
+/* --- Video de fondo --- */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* --- Contenedor de contenido principal --- */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    /* Use min-height 100vh to ensure it always takes full viewport height */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Arrange content and footer vertically */
+    justify-content: center; /* Center content vertically in the available space */
+    align-items: center; /* Center content horizontally */
+    background: rgba(0, 0, 0, 0.45);
+    /* Add padding here to prevent content from touching edges */
+    padding: 2rem 1rem; /* Top/bottom and left/right padding */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* --- Caja de contenido --- */
+.content {
+    background: rgba(20, 20, 20, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    max-width: 500px;
+    /* Removed max-height: 400px; as it could cut off content. Consider 'overflow-y: auto;' if needed. */
+    width: 100%;
+    text-align: center;
+    /* Add some margin to separate it from the footer if content-wrapper is flex-column */
+    margin-bottom: 2rem;
+}
+
+/* --- Título y párrafo --- */
+.content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2; /* Improve readability for large titles */
+}
+
+.content p {
+    font-size: 1.3rem;
+    /* max-width for p within content box is redundant if content has max-width */
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+/* --- Botón de acción --- */
+.btn-submit {
+    width: 100%;
+    max-width: 250px;
+    margin: 18px auto 9px; /* Use auto for left/right margin to center the button */
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: white;
+    background: linear-gradient(135deg, #f64f59, #c471ed, #12c2e9);
+    background-size: 200%;
+    background-position: left;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: background-position 0.6s ease-in-out, box-shadow 0.4s;
+}
+
+.btn-submit::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease-in-out;
+    z-index: -1;
+}
+
+.btn-submit:hover {
+    background-position: right;
+    box-shadow: 0 0 20px 10px rgba(246, 79, 89, 0.4);
+}
+
+.btn-submit:hover::before {
+    left: 100%;
+}
+
+/* --- Pie de página --- */
+.footer {
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ddd;
+    background: rgba(0, 0, 0, 0.6);
+    /* No need for 'position: relative; bottom: 0; width: 100%;' if content-wrapper uses flex and footer is last element */
+    /* Instead, use margin-top: auto; to push the footer to the bottom */
+    margin-top: auto; /* Pushes the footer to the bottom when content-wrapper is flex-column */
+    width: 100%; /* Ensure footer spans full width */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}

@@ -41,3 +41,6 @@ def eliminar_evento(request, pk):
     # Opcional: podrías renderizar una página de confirmación antes de eliminar
     # Por ahora, simplemente redirigimos si se intenta acceder con GET (no recomendado)
     return redirect('lista_eventos')
+
+def inicio(request):
+    return render(request, 'inicio.html')
