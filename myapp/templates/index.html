@@ -1,152 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registro de Evento</title>
-{% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}"/></head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registro de Evento</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
 <body>
-  <header class="site-header">
-    <nav>
-      <ul class="nav-list">
-        <li><a href="registro.html">Registro</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header class="site-header">
+        <nav>
+            <ul class="nav-list">
+                <li><a href="{% url 'lista_eventos' %}">Registro</a></li> {# Asumiendo que 'registro.html' es esta misma página #}
+                <li><a href="{% url 'lista_eventos' %}">Eventos</a></li> {# Ambos pueden apuntar a la misma lista #}
+            </ul>
+        </nav>
+    </header>
 
-  <main class="main-content">
-    <div class="registro-container">
-      <h1>Registro de Evento</h1>
-      <form class="registro-form">
-        <div class="form-group">
-          <label for="nombre">Nombre del Evento</label>
-          <input type="text" id="nombre" name="nombre" required />
+    <main class="main-content">
+        <div class="registro-container">
+            <h1>{% if edit_mode %}Editar Evento{% else %}Registro de Evento{% endif %}</h1>
+            <form class="registro-form" method="post" action="{% if edit_mode %}{% url 'editar_evento' evento_id %}{% else %}{% url 'lista_eventos' %}{% endif %}">
+                {% csrf_token %} {# ¡MUY IMPORTANTE PARA LA SEGURIDAD EN DJANGO! #}
+
+                <div class="form-group">
+                    <label for="id_nombre">Nombre del Evento</label>
+                    {{ form.nombre }} {# Esto renderiza el input de nombre #}
+                    {% if form.nombre.errors %}<ul class="errorlist">{% for error in form.nombre.errors %}<li>{{ error }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_fecha">Fecha</label>
+                    {{ form.fecha }} {# Renderiza el input de fecha #}
+                    {% if form.fecha.errors %}<ul class="errorlist">{% for error in form.fecha.errors %}<li>{{ error }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_hora">Hora</label>
+                    {{ form.hora }} {# Renderiza el input de hora #}
+                    {% if form.hora.errors %}<ul class="errorlist">{% for error in form.hora.errors %}<li>{{ error }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_ubicacion">Ubicación</label>
+                    {{ form.ubicacion }} {# Renderiza el select de ubicación #}
+                    {% if form.ubicacion.errors %}<ul class="errorlist">{% for error in form.ubicacion.errors %}<li>{{ error }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_tipo">Tipo de Evento</label>
+                    {{ form.tipo }} {# Renderiza el select de tipo #}
+                    {% if form.tipo.errors %}<ul class="errorlist">{% for error in form.tipo.errors %}<li>{{ error }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_descripcion">Descripción</label>
+                    {{ form.descripcion }} {# Renderiza el textarea de descripción #}
+                    {% if form.descripcion.errors %}<ul class="errorlist">{% for error in form.descripcion.errors %}<li>{{ error }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    {% if edit_mode %}Actualizar Evento{% else %}Registrar Evento{% endif %}
+                </button>
+            </form>
         </div>
 
-        <div class="form-group">
-          <label for="fecha">Fecha</label>
-          <input type="date" id="fecha" name="fecha" required />
+        <div class="tabla-container">
+            <h2>Eventos Registrados</h2>
+            <table class="tabla-eventos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Ubicación</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for evento in eventos %}
+                    <tr>
+                        <td>{{ evento.nombre }}</td>
+                        <td>{{ evento.fecha|date:"Y-m-d" }}</td> {# Formato de fecha #}
+                        <td>{{ evento.hora|time:"H:i" }}</td> {# Formato de hora #}
+                        <td>{{ evento.ubicacion }}</td>
+                        <td>{{ evento.tipo }}</td>
+                        <td>{{ evento.descripcion }}</td>
+                        <td>
+                            <a href="{% url 'editar_evento' evento.pk %}" class="btn-registro btn-editar">Editar</a>
+                            <form action="{% url 'eliminar_evento' evento.pk %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-registro btn-eliminar" onclick="return confirm('¿Estás seguro de que quieres eliminar este evento?');">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No hay eventos registrados aún.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-
-        <div class="form-group">
-          <label for="hora">Hora</label>
-          <input type="time" id="hora" name="hora" required />
-        </div>
-
-        <div class="form-group">
-          <label for="ubicacion">Ubicación</label>
-          <select id="ubicacion" name="ubicacion" required>
-            <option value="" disabled selected>Selecciona Distrito</option>
-            <option value="Ancón">Ancón</option>
-            <option value="Ate">Ate</option>
-            <option value="Barranco">Barranco</option>
-            <option value="Breña">Breña</option>
-            <option value="Carabayllo">Carabayllo</option>
-            <option value="Chaclacayo">Chaclacayo</option>
-            <option value="Chorrillos">Chorrillos</option>
-            <option value="Cieneguilla">Cieneguilla</option>
-            <option value="Comas">Comas</option>
-            <option value="El Agustino">El Agustino</option>
-            <option value="Independencia">Independencia</option>
-            <option value="Jesús María">Jesús María</option>
-            <option value="La Molina">La Molina</option>
-            <option value="La Victoria">La Victoria</option>
-            <option value="Lima">Lima</option>
-            <option value="Lince">Lince</option>
-            <option value="Los Olivos">Los Olivos</option>
-            <option value="Lurigancho">Lurigancho</option>
-            <option value="Lurín">Lurín</option>
-            <option value="Magdalena del Mar">Magdalena del Mar</option>
-            <option value="Miraflores">Miraflores</option>
-            <option value="Pachacámac">Pachacámac</option>
-            <option value="Pucusana">Pucusana</option>
-            <option value="Pueblo Libre">Pueblo Libre</option>
-            <option value="Puente Piedra">Puente Piedra</option>
-            <option value="Punta Hermosa">Punta Hermosa</option>
-            <option value="Punta Negra">Punta Negra</option>
-            <option value="Rímac">Rímac</option>
-            <option value="San Bartolo">San Bartolo</option>
-            <option value="San Borja">San Borja</option>
-            <option value="San Isidro">San Isidro</option>
-            <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
-            <option value="San Juan de Miraflores">San Juan de Miraflores</option>
-            <option value="San Luis">San Luis</option>
-            <option value="San Martín de Porres">San Martín de Porres</option>
-            <option value="San Miguel">San Miguel</option>
-            <option value="Santa Anita">Santa Anita</option>
-            <option value="Santa María del Mar">Santa María del Mar</option>
-            <option value="Santa Rosa">Santa Rosa</option>
-            <option value="Santiago de Surco">Santiago de Surco</option>
-            <option value="Surquillo">Surquillo</option>
-            <option value="Villa El Salvador">Villa El Salvador</option>
-            <option value="Villa María del Triunfo">Villa María del Triunfo</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="tipo">Tipo de Evento</label>
-          <select id="tipo" name="tipo">
-            <option value="presencial">Presencial</option>
-            <option value="virtual">Virtual</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="descripcion">Descripción</label>
-          <textarea id="descripcion" name="descripcion" rows="4" placeholder="Detalles del evento…"></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Registrar Evento</button>
-      </form>
-    </div>
-    <div class="tabla-container">
-  <h2>Eventos Registrados</h2>
-  <table class="tabla-eventos">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Ubicación</th>
-        <th>Tipo</th>
-        <th>Descripción</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Ejemplo de fila -->
-      <tr>
-        <td>Evento A</td>
-        <td>2025-08-15</td>
-        <td>14:00</td>
-        <td>Auditorio 1</td>
-        <td>Conferencia</td>
-        <td>Charla sobre tecnología</td>
-        <td>
-          <button class="btn-registro btn-ver">Ver</button>
-          <button class="btn-registro btn-editar">Editar</button>
-          <button class="btn-registro btn-eliminar">Eliminar</button>
-        </td>
-      </tr><tr>
-        <td>Evento A</td>
-        <td>2025-08-15</td>
-        <td>14:00</td>
-        <td>Auditorio 1</td>
-        <td>Conferencia</td>
-        <td>Charla sobre tecnología</td>
-        <td>
-          <button class="btn-registro btn-ver">Ver</button>
-          <button class="btn-registro btn-editar">Editar</button>
-          <button class="btn-registro btn-eliminar">Eliminar</button>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-
-  </main>
+    </main>
 </body>
 </html>

@@ -1,7 +1,10 @@
-from django.contrib import admin
-from django.urls import path, include
+# myapp/urls.py
+
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('eventos.urls')),
+    path('', views.lista_eventos, name='lista_eventos'),
+    path('editar/<int:pk>/', views.editar_evento, name='editar_evento'),
+    path('eliminar/<int:pk>/', views.eliminar_evento, name='eliminar_evento'),
 ]
