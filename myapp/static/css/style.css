@@ -10,7 +10,7 @@
 
 body {
   /* Ruta de tu imagen de fondo */
-background-image: url(../images/sea-7252122_1920.jpg);
+background-image: url(../images/Background.jpg);
 
   /* Ajustes para evitar distorsión */
   background-size: cover;           /* escala la imagen cubriendo todo el área */
@@ -32,12 +32,12 @@ background-image: url(../images/sea-7252122_1920.jpg);
   justify-content: flex-start;
   align-items: flex-start;
   padding: 6rem 2rem 2rem; /* espacio para header */
-  overflow: hidden; /* deja espacio para el header */
+  overflow: auto; /* deja espacio para el header */
 }
 
 .main-content::before {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   inset: 0;
@@ -74,7 +74,7 @@ background-image: url(../images/sea-7252122_1920.jpg);
 
 /* Panel de registro semitransparente */
 .registro-container {
-  position: relative;
+  margin-left: 1rem;
   z-index: 1;
   width: 320px;
   max-width: 800px;
@@ -111,6 +111,8 @@ background-image: url(../images/sea-7252122_1920.jpg);
   width: 100%;
   padding: 12px 10px;
   background: transparent;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: white;
   border: none;
   border-bottom: 2px solid white;
@@ -182,4 +184,126 @@ select {
 
 .btn-submit:hover::before {
   left: 100%; /* Mueve la animación hacia la derecha */
+}
+
+
+/* ======================================
+Contenedor de la tabla al lado del formulario 
+====================================== */
+.tabla-container {
+  flex: 1;
+  min-width: 400px;
+  margin-left: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: white;
+  z-index: 1;
+}
+
+/* Título de la tabla */
+.tabla-container h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #f0f0f0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+/* Estilos de tabla */
+.tabla-eventos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tabla-eventos th,
+.tabla-eventos td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabla-eventos td {
+  max-width: 200px;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.tabla-eventos thead {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tabla-eventos thead th {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.tabla-eventos tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================
+   PERSONALIZADOS DE BOTONES
+========================== */
+.btn-registro {
+  padding: 0.7rem;
+  border-radius: 5px;
+  margin: 0px 5px 0px 5px;
+  font-size: 1rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  color: white;
+  background-size: 200%;
+  background-position: left;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.6s ease-in-out, box-shadow 0.4s;
+}
+
+/* Efecto animado brillante */
+.btn-registro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease-in-out;
+  z-index: -1;
+}
+
+/* Animacion */
+.btn-registro:hover {
+  background-position: right;
+}
+
+.btn-registro:hover::before {
+  left: 100%;
+}
+
+/* Colores personalizados con sombra en hover */
+.btn-ver {
+  background: linear-gradient(135deg, #3a8dde, #6ec6ff);
+}
+.btn-ver:hover {
+  box-shadow: 0 0 10px 3px rgba(71, 182, 233, 0.4);
+}
+
+.btn-editar {
+  background: linear-gradient(135deg, #9c27b0, #ce93d8);
+}
+.btn-editar:hover {
+  box-shadow: 0 0 10px 3px rgba(185, 79, 206, 0.4);
+}
+
+.btn-eliminar {
+  background: linear-gradient(135deg, #e53935, #ff8a65);
+}
+.btn-eliminar:hover {
+  box-shadow: 0 0 10px 3px rgba(229, 87, 53, 0.4);
 }
