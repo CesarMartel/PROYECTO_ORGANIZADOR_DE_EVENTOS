@@ -80,7 +80,7 @@ Además, el tablero incluye:
 
 ## 🔗 Link del Tablero Trello
 
-👉 [Ver tablero](https://trello.com/b/h46gwpod/Registro%20de%20Eventos)
+👉 [Ver tablero](https://trello.com/b/KNUNpPWx/project-event-registration)
 
 ---
 
