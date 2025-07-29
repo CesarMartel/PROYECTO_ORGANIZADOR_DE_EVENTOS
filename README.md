@@ -1,3 +1,4 @@
+---
 # 🗓️ Registro de Eventos
 
 ## 📌 Descripción del Proyecto
@@ -8,45 +9,81 @@ El sistema busca brindar una interfaz intuitiva y eficiente que facilite la admi
 
 ---
 
-### 🔧 El sistema permite:
+### 🔧 Funcionalidades Principales:
 
-* Registrar nuevos eventos con campos obligatorios (evento, fecha, ubicación, organizador).
-* Validar que todos los datos ingresados sean correctos y completos.
-* Visualizar los eventos registrados en una tabla dinámica y ordenada.
-* Garantizar una experiencia de usuario simple y moderna.
+- Registrar nuevos eventos con campos obligatorios (evento, fecha, ubicación, organizador).
+- Validar que todos los datos ingresados sean correctos y completos.
+- Visualizar los eventos registrados en una tabla dinámica y ordenada.
+- Garantizar una experiencia de usuario simple y moderna.
 
 📸 *(Imagen de referencia del formulario + tabla)*
 
 ---
 
-## 👥 Roles del Equipo
+## 👥 Integrantes y Roles del Equipo
 
 | Rol                | Nombre           |
-| ------------------ | -----------------|
+| ------------------ | ---------------- |
 | Scrum Master       | Cesar Martel     |
 | Product Owner      | Miguel Ruiz      |
-| Developer front-end| Felix Torre      |
-| Developer apoyo    | Nicolaz Meza     |
-| Developer back-end | Sebastian Rosas  |
+| Developer Front-end| Felix Torre      |
+| Developer Apoyo    | Nicolaz Meza     |
+| Developer Back-end | Sebastian Rosas  |
 
 ---
 
-## 🧰 Tecnologías Usadas
+## 🛠️ Instalación del Proyecto
 
-* **Backend:** Django, Python, MySQL
-* **Frontend:** HTML, CSS, JavaScript
-* **Gestión del Proyecto:** Trello, GitHub
-* **Metodologías Ágiles:** Scrum, XP
+### Requisitos:
+
+- Python 3.10 o superior
+- Django 4.x
+- - Git
+
+### Pasos de Instalación:
+
+1. **Clona el repositorio:**
+
+   ```bash
+   git clone https://github.com/CesarMartel/PROYECTO_ORGANIZADOR_DE_EVENTOS.git
+   cd PROYECTO_ORGANIZADOR_DE_EVENTOS
+``
+
+2. **Crea y activa un entorno virtual:**
+
+   ```bash
+   python -m venv .env
+   source .env/bin/activate    # En Linux/Mac
+   .env\Scripts\activate       # En Windows
+   ```
+
+3. **Instala las dependencias:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Aplica las migraciones:**
+
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Ejecuta el servidor:**
+
+   ```bash
+   python manage.py runserver
+   ```
 
 ---
 
-## ✅ User Stories (Historias de Usuario)
+## ✅ Historias de Usuario Principales
 
 ### ✔️ Registro de Eventos
 
 **Como usuario**, necesito registrar eventos indicando nombre, fecha, ubicación y organizador, para tener un control organizado de las actividades.
 
-> Estado: 🔄 En proceso
+> Estado: ✅ Completado
 
 ---
 
@@ -54,7 +91,7 @@ El sistema busca brindar una interfaz intuitiva y eficiente que facilite la admi
 
 **Como usuario**, necesito que el sistema valide todos los campos antes de registrar un evento para evitar errores.
 
-> Estado: 🔄 En proceso
+> Estado: ✅ Completado
 
 ---
 
@@ -62,30 +99,32 @@ El sistema busca brindar una interfaz intuitiva y eficiente que facilite la admi
 
 **Como usuario**, necesito que la aplicación tenga una interfaz amigable e intuitiva para facilitar el registro de eventos.
 
-> > Estado: 🔄 En proceso
+> Estado: ✅ Completado
 
 ---
 
-## 📖 Estructura del Tablero (Trello)
+## 🗂️ Estructura del Tablero Trello
 
-Utilizamos Trello para gestionar nuestras tareas del proyecto. Cada tarjeta representa una historia de usuario o funcionalidad, organizada por columnas que indican su estado: "Por hacer", "En proceso", "Finalizado".
+El equipo utiliza **Trello** para organizar el flujo de trabajo de acuerdo con la metodología Scrum + XP. Las tareas están distribuidas en columnas:
 
-Además, el tablero incluye:
+* Por hacer
+* En proceso
+* Finalizado
 
-* Un README con contexto del proyecto.
-* Colores y etiquetas por prioridad.
-* Tareas distribuidas entre los miembros del equipo.
+Incluye:
 
----
-
-## 🔗 Link del Tablero Trello
-
-👉 [Ver tablero](https://trello.com/b/KNUNpPWx/project-event-registration)
+* Etiquetas por prioridad
+* Asignación de tareas por rol
+* Documentación y checklist por tarea
 
 ---
 
-## 🚀 Link del Repositorio
+## 🔗 Accesos Directos
 
-🔗 [Repositorio en GitHub](https://github.com/CesarMartel/PROYECTO_ORGANIZADOR_DE_EVENTOS)
+* 🧾 **Tablero Trello:**
+  👉 [https://trello.com/b/KNUNpPWx/project-event-registration](https://trello.com/b/KNUNpPWx/project-event-registration)
+
+* 💻 **Repositorio GitHub:**
+  🔗 [https://github.com/CesarMartel/PROYECTO\_ORGANIZADOR\_DE\_EVENTOS](https://github.com/CesarMartel/PROYECTO_ORGANIZADOR_DE_EVENTOS)
 
 ---
