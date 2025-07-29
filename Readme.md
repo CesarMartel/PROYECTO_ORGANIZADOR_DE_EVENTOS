@@ -21,6 +21,10 @@ En esta vista puedes ingresar nuevos eventos, ver la tabla de eventos existentes
 
 ![Vista de Registro de Eventos](image-1.png)
 
+![alt text](image.png)
+
+Pag Registro
+![alt text](image-1.png)
 ---
 
 ## ⚙️ Funcionalidades Principales
