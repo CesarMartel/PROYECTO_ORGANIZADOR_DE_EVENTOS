@@ -1,0 +1,31 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ main, develop ] # Ejecuta el workflow en cada push a estas ramas
+  pull_request:
+    branches: [ main, develop ] # Ejecuta el workflow en cada pull request a estas ramas
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Elige el sistema operativo para ejecutar las acciones
+
+    steps:
+    
+uses: actions/checkout@v4 # Paso para clonar el repositorio
+name: Set up Python
+  uses: actions/setup-python@v5
+  with:
+    python-version: '3.13.5' # O la versión de Python que uses en tu proyecto,
+,
+
+    
+name: Install dependencies
+    run: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt # Asegúrate de tener un archivo requirements.txt,
+
+    
+name: Run tests
+    run: |
+      python manage.py test # Ejecuta las pruebas de Django
