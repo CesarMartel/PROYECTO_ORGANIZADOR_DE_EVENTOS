@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, Proyect-web ] # AÑADIR 'Proyect-web' aquí
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, Proyect-web ] # OPCIONAL: También puedes añadirla aquí para PRs
 
 jobs:
   build:
