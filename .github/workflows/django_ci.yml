@@ -2,33 +2,27 @@ name: Django CI
 
 on:
   push:
-    branches: [ main, develop ] # Ejecuta el workflow en cada push a estas ramas
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main, develop ] # Ejecuta el workflow en cada pull request a estas ramas
+    branches: [ main, develop ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Elige el sistema operativo para ejecutar las acciones
+    runs-on: ubuntu-latest
 
-    steps: # Este es el inicio de la lista de pasos
-    # PASO 1: Clonar el repositorio
-    - uses: actions/checkout@v4 # Cada paso de la lista debe iniciar con un guion (-)
-                                # y estar sangrado con 4 espacios respecto a 'jobs:' o 2 espacios respecto a 'steps:'
+    steps:
+    - uses: actions/checkout@v4
 
-    # PASO 2: Configurar Python
-    - name: Set up Python # Este es el inicio del segundo paso
-      uses: actions/setup-python@v5 # 'uses' está sangrado 2 espacios desde 'name'
-      with: # 'with' está sangrado 2 espacios desde 'uses'
-        python-version: '3.13.5' # 'python-version' está sangrado 2 espacios desde 'with'
-        # Quita la coma "," al final de '3.13.5', ya que no es sintaxis YAML válida ahí.
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13.5'
 
-    # PASO 3: Instalar dependencias
-    - name: Install dependencies # Este es el inicio del tercer paso
-      run: | # 'run' está sangrado 2 espacios desde 'name'
-        python -m pip install --upgrade pip # Estos comandos están sangrados 2 espacios desde 'run:'
-        pip install -r requirements.txt # Asegúrate de tener un archivo requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-    # PASO 4: Ejecutar pruebas
-    - name: Run tests # Este es el inicio del cuarto paso
-      run: | # 'run' está sangrado 2 espacios desde 'name'
-        python manage.py test # Este comando está sangrado 2 espacios desde 'run:'
+    - name: Run tests
+      run: |
+        python manage.py test
