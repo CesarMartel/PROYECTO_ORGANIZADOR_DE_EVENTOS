@@ -41,9 +41,3 @@ class EventoModelTest(TestCase):
             descripcion="Charla sobre IA."
         )
         self.assertEqual(str(evento), "Conferencia Tech")
-
-# Puedes añadir más clases de test para otras partes de tu aplicación:
-# class MyViewTest(TestCase):
-#     def test_home_page_loads(self):
-#         response = self.client.get(reverse('home_page_name_in_urls')) # Si tienes una URL con nombre
-#         self.assertEqual(response.status_code, 200)
