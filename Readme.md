@@ -1,7 +1,7 @@
 ## 📂 Estructura del Proyecto
 
 ```markdown
-```bash
+
 RegistroDeEventos/
 ├── eventos/
 │   ├── admin.py
