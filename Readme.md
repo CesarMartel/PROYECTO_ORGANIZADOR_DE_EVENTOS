@@ -1,5 +1,7 @@
 ## 📂 Estructura del Proyecto
 
+```markdown
+```bash
 RegistroDeEventos/
 ├── eventos/
 │   ├── admin.py
@@ -18,7 +20,7 @@ RegistroDeEventos/
 │   └── css/
 │       └── style.css
 ├── RegistroDeEventos/
-│   ├── **init**.py
+│   ├── __init__.py
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
